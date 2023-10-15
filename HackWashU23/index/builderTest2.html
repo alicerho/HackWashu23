@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Let's build your resume!</title>
+    <meta charset="utf8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        h1 {
+            color: #036BB1;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h2 {
+            color:#036BB1;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h3 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        p {
+            color: #2C99E3;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body {
+            background-image: url("./assets/typingWoman.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: right bottom;
+            background-size: 40%;
+        }
+        hr {
+            border-width: 0;
+        }
+        label {
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input {
+            border-style: solid;
+            border-width: 1px;
+            border-color: black;
+            margin-left: 5x;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        input[type=submit] {
+        border: 1px solid #036BB1;
+        color: #fff;
+        background:#036BB1;
+        padding: 10px 40px;
+        border-radius: 4px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        }
+        button {
+            background-color:#2C99E3;
+            color: white;
+            border-style:none;
+            border-radius: 8px;
+        }
+        .introbar {
+            width: 100%;
+            text-align: left;
+            height: 200 px;
+            margin: 0 px;
+            padding-left: 15px;
+            background-color: #036BB1;
+        }
+        .container {
+            width: 100%;
+            text-align: left;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="introbar"><h2><a href="home.html"><img src="./assets/cvFlyLogo.jpeg" width=10%></a></h2></div>
+    <div style="padding-right:20px; padding-left: 20px">
+        <h1><b>Let's Build Your Resume!</b></h1>
+        <p>Please input your information into the fields below, then click submit.</p>
+    </div>
+    <form action="resumeTest.html" method="POST" id="form">
+        <div class="container">
+            <h2>Personal Information</h2>
+
+            <label for="fullname">Full name: </label>
+            <input type="text" name="firstname" id="firstname" required>
+            <br>
+
+            <label for="description">Description: </label>
+            <input type = "text" name = "description" id="description" required>
+            <br>
+
+            <label for="address">Home Address: </label>
+            <input type="text" name="address" id="address" required>
+            <br>
+
+            <label for="phoneNum">Phone Number: </label>
+            <input type="number" name="phoneNum" id="phoneNum" required>
+            <br>
+
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" required>
+            <br>
+
+            <hr>
+
+            <h2>Objective</h2>
+            <label for="objective">Objective: </label>
+                <input type="text" name="objective" id="objective" required>
+                <br>
+            </div>
+            
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-entry-1">
+                    <h3>School 1</h3>
+                    <label for="school">School: </label>
+                    <input type="text" name="school1" id="school1" placeholder="" required>
+                    <br>
+                    <label for="degree">Degree: </label>
+                    <input type="text" name="degree1" id="degree1" placeholder="" required>
+                    <br>
+                    <label for="year">Graduation Year/Expected Graduation Year: </label>
+                    <input type="text" name="year1" id="year1" placeholder="" required>
+                </div>
+                <div class="education-entry-2">
+                    <h3>School 2</h3>
+                    <label for="school">School: </label>
+                    <input type="text" name="school2" id="school2" placeholder="" required>
+                    <br>
+                    <label for="degree">Degree: </label>
+                    <input type="text" name="degree2" id="degree2" placeholder="" required>
+                    <br>
+                    <label for="year">Graduation Year/Expected Graduation Year: </label>
+                    <input type="text2" name="year2" id="year2" placeholder="" required>
+                </div>
+                <hr>
+            </div>
+        </div> 
+    
+    <div class="container">
+        <h2>Experience</h2>
+        <div class="experience-entry-1">
+            <h3>Job 1:</h3>
+            <label for="jTitle1">Title: </label>
+            <input type="text" name="jTitle1" id="jTitle1" placeholder="" required>
+            <br>
+            <label for="organization1">Organization Name: </label>
+            <input type="text" name="organization1" id="organization1" placeholder="" required>
+            <br>
+            <label for="jYear1">Duration of Hire: </label>
+            <input type="text" name="jYear1" id="jYear1" placeholder="" required>
+            <br>
+            <label for="description1">Description: </label>
+            <input type="text" name="description1" id="description1" placeholder="" required>
+        </div>
+        <div class="experience-entry-2">
+            <h3>Job 2:</h3>
+            <label for="jTitle2">Title: </label>
+            <input type="text" name="jTitle2" id="jTitle2" placeholder="" required>
+            <br>
+            <label for="organization2">Organization Name: </label>
+            <input type="text" name="organization2" id="organization2" placeholder="" required>
+            <br>
+            <label for="jYear2">Duration of Hire: </label>
+            <input type="text" name="jYear2" id="jYear2" placeholder="" required>
+            <br>
+            <label for="description2">Description: </label>
+            <input type="text" name="description2" id="description2" placeholder="" required>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container">
+        <h2>Skills</h2>
+        <div class="skills">
+            <label for="skills">Skills: </label>
+            <input type="text" name="skills" id="skills" placeholder="" required>
+        </div>
+    </div>
+    
+
+    <div class="container">
+        <h2>Awards and Accomplishments</h2>
+
+        <!-- <div id="awards">
+            <div class="award-entry-1">
+              <label for="awards-1">Award/Accomplishment: </label>
+              <input type="text" id="awards-1" placeholder="" required> -->
+                <div class="award1">
+                  <label for="award1">Award/Accomplishments: </label>
+                  <input type="text" name="award1" id="award1" placeholder="" required>
+                </div>
+        <hr>
+    </div>
+
+    <div class="container">
+        <h2>Projects</h2>
+        <div id="projects">
+              <label for="pTitle1">Title: </label>
+              <input type="text" id="pTitle1" placeholder="" required>
+              <br>
+              <label for="pDescription1">Description: </label>
+              <input type="text" id="pDescription1" placeholder="" required>
+              <br>
+                <label for="pTitle2">Title: </label>
+                <input type="text" id="pTitle2" placeholder="" required>
+                <br>
+                <label for="pDescription2">Description: </label>
+                <input type="text" id="pDescription2" placeholder="" required>
+            </div>
+            <input type="submit" value="Submit">
+          </div>
+
+          </div>
+        </div>
+
+        
+
+
+
+<script>
+const form = document.getElementById('form')
+const firstName = document.getElementById("firstname")
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();  
+
+  const firstNameValue = document.getElementById("firstname").value;
+  const descriptionValue = document.getElementById("description").value;
+  const addressValue = document.getElementById("address").value;
+  const phoneNumValue = document.getElementById("phoneNum").value;
+  const emailValue = document.getElementById("email").value;
+
+  const objectiveValue = document.getElementById("objective").value;
+
+  const award1Value= document.getElementById("award1").value;
+
+  const school1Value = document.getElementById("school1").value;
+  const degree1Value = document.getElementById("degree1").value;
+  const year1Value = document.getElementById("year1").value;
+  const school2Value = document.getElementById("school2").value;
+  const degree2Value = document.getElementById("degree2").value;
+  const year2Value = document.getElementById("year2").value;
+
+  const jTitle1Value = document.getElementById("jTitle1").value;
+  const organization1Value = document.getElementById("organization1").value;
+  const jYear1Value = document.getElementById("jYear1").value;
+  const description1Value = document.getElementById("description1").value;
+  const jTitle2Value = document.getElementById("jTitle2").value;
+  const organization2Value = document.getElementById("organization2").value;
+  const jYear2Value = document.getElementById("jYear2").value;
+  const description2Value = document.getElementById("description2").value;
+
+  const skillsValue = document.getElementById("skills").value;
+
+  const pTitle1Value = document.getElementById("pTitle1").value;
+  const pDescription1Value = document.getElementById("pDescription1").value;
+
+  const pTitle2Value = document.getElementById("pTitle2").value;
+  const pDescription2Value = document.getElementById("pDescription2").value;
+
+localStorage.clear();
+
+  localStorage.setItem('first-name',firstNameValue)
+  localStorage.setItem('description', descriptionValue)
+  localStorage.setItem('address', addressValue)
+  localStorage.setItem('phoneNum', phoneNumValue)
+  localStorage.setItem('email', emailValue)
+
+  localStorage.setItem('objective', objectiveValue)
+
+  localStorage.setItem('award1', award1Value)
+
+  localStorage.setItem('school1', school1Value)
+  localStorage.setItem('degree1', degree1Value)
+  localStorage.setItem('year1', year1Value)
+  localStorage.setItem('school2', school2Value)
+  localStorage.setItem('degree2', degree2Value)
+  localStorage.setItem('year2', year2Value)
+
+  localStorage.setItem('jTitle1', jTitle1Value)
+  localStorage.setItem('organization1', organization1Value)
+  localStorage.setItem('jYear1', jYear1Value)
+  localStorage.setItem('description1', description1Value)
+  localStorage.setItem('jTitle2', jTitle2Value)
+  localStorage.setItem('organization2', organization2Value)
+  localStorage.setItem('jYear2', jYear2Value)
+  localStorage.setItem('description2', description2Value)
+
+  localStorage.setItem('skills', skillsValue)
+
+  localStorage.setItem('pTitle1', pTitle1Value)
+  localStorage.setItem('pDescription1', pDescription1Value)
+
+  localStorage.setItem('pTitle2', pTitle2Value)
+  localStorage.setItem('pDescription2', pDescription2Value)
+
+  window.location.href = "resumeTest.html";
+})
+
+</script>
+   
+   
+</body>
+
+
+</html>

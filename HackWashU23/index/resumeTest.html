@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Name - Resume</title>
+    <style>
+        body {
+            /* font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0; */
+            background-color: #DBDBDB;
+        }
+        /* @page {
+            size: 8.5in 11in;
+            margin: 0.5in;
+        } */
+
+        p {
+            font-size: 7px;
+        }
+
+        .resume {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+
+            width: 523px;
+            height: 720px;
+
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .position {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .column-container {
+            display: flex;
+        }
+
+        .left-column {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .right-column {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #4a73b5;
+        }
+
+        .section p {
+            margin: 5px 0;
+            color: #444;
+        }
+
+        button {
+        border: 1px solid #036BB1;
+        color: #fff;
+        background:#036BB1;
+        padding: 30px 40px;
+        border-radius: 20px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0 auto;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    
+    <div class="resume" id="pdfContent">
+        <div class="header">
+            <div class="name"><strong><span id="first-name"></span></strong></div>
+            <div class="position"><span id ="description"></span></div>
+            
+        </div>
+
+        
+
+        <hr>
+        <div class="column-container">
+            <div class="left-column">
+                <div class="section">
+                    <h2>Contact</h2>
+                    <p><div class="phoneNum"><span id ="phoneNum"></span></div></p>
+                    <p><div class="email"><span id ="email"></span></div></p>
+                    <p><div class="address"><span id ="address"></span></div></p>
+                
+                </div>
+                <div class="section">
+                    <h2>Education</h2>
+                    <b><p><div class="school1"><span id ="school1"></span></div></p></b>
+                    <p><div class="degree1"><span id ="degree1"></span></div></p>
+                    <p><div class="year1"><span id ="year1"></span></div></p>
+                
+                    <b><p><div class="school2"><span id ="school2"></span></div></p></b>
+                    <p><div class="degree2"><span id ="degree2"></span></div></p>
+                    <p><div class="year2"><span id ="year2"></span></div></p>
+                </div>
+
+                <div class="section">
+                    <h2>Skills</h2>
+                    <p><div class="skills"><span id ="skills"></span></div></p>
+                </div>
+
+                <div class="section">
+                    <h2>Awards and accomplishments</h2>
+                    <p><div class="award1"><span id ="award1"></span></div></p>                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2>Objective</h2>
+                    <!-- <p>Description of the project. ashkfhskj
+                        lasdjfjaksdjfklasdjf kaljsffd
+                    </p>
+                        <!-- <p><strong>Objective</strong> </p> -->
+                        <p><div class="objective"><span id="objective"></span></div></p>
+                </div>
+                <div class="section">
+                    <h2>Work Experience</h2>
+                    <b><p><div class="jTitle1"><span id ="jTitle1"></span></div></p></b>
+                    <p><div class="organization1"><span id ="organization1"></span></div></p>
+                    <p style="font-size:11px"><div class="jYear1"><span id ="jYear1"></span></div></p>
+                    <p><div class="description1"><span id ="description1"></span></div></p>
+                    <b><p><div class="jTitle2"><span id ="jTitle2"></span></div></p></b>
+                    <p><div class="organization2"><span id ="organization2"></span></div></p>
+                    <p style="font-size:11px"><div class="jYear2"><span id ="jYear2"></span></p>
+                    <p><div class="description2"><span id ="description2"></span></div></p>
+                </div>
+
+                <div class="section">
+                    <h2>Projects</h2>
+                    <p><div class = "pTitle1"><strong><span id = "pTitle1" ></span></strong></div></p>
+                    <p><div class = "pDescription1"><span id = "pDescription1" ></span></div></p>
+                    <p><div class = "pTitle2"><strong><span id = "pTitle2" ></span></strong></div></p>
+                    <p><div class = "pDescription2"><span id = "pDescription2" ></span></div></p>
+                </div>
+            </div>
+        </div>
+    
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin: 50px"><button onclick="downloadResume()">Download Your Resume</button></div>
+
+
+    <script type="text/javascript">
+        function downloadResume() {
+            const { jsPDF } = window.jspdf;
+ 
+            let doc = new jsPDF('p', 'px', [563, 750]);
+            let pdfjs = document.querySelector('#pdfContent');
+ 
+            doc.html(pdfjs, {
+                callback: function(doc) {
+                    var pageCount = doc.internal.getNumberOfPages();
+                    doc.deletePage(pageCount);
+                    doc.save("resume.pdf");
+                },
+                x: 0,
+                y: 0
+            });                
+        }            
+    </script>
+
+    <script>
+        const firstName = localStorage.getItem('first-name');
+        document.getElementById('first-name').textContent = firstName;
+        const description = localStorage.getItem('description');
+        document.getElementById('description').textContent = description;
+        const address = localStorage.getItem('address');
+        document.getElementById('address').textContent = address;
+        const phoneNum = localStorage.getItem('phoneNum');
+        document.getElementById('phoneNum').textContent = phoneNum;
+        const email = localStorage.getItem('email');
+        document.getElementById('email').textContent = email;
+
+        const objective = localStorage.getItem('objective');
+        document.getElementById('objective').textContent=objective;
+
+        const award1 = localStorage.getItem('award1');
+        document.getElementById('award1').textContent=award1;
+
+        const school1 = localStorage.getItem('school1');
+        document.getElementById('school1').textContent=school1;
+        const degree1 = localStorage.getItem('degree1');
+        document.getElementById('degree1').textContent=degree1;
+        const year1 = localStorage.getItem('year1');
+        document.getElementById('year1').textContent=year1;
+        const school2 = localStorage.getItem('school2');
+        document.getElementById('school2').textContent=school2;
+        const degree2 = localStorage.getItem('degree2');
+        document.getElementById('degree2').textContent=degree2;
+        const year2 = localStorage.getItem('year2');
+        document.getElementById('year2').textContent=year2;
+
+        const jTitle1 = localStorage.getItem('jTitle1');
+        document.getElementById('jTitle1').textContent=jTitle1;
+        const organization1 = localStorage.getItem('organization1');
+        document.getElementById('organization1').textContent=organization1;
+        const jYear1 = localStorage.getItem('jYear1');
+        document.getElementById('jYear1').textContent=jYear1;
+        const description1 = localStorage.getItem('description1');
+        document.getElementById('description1').textContent=description1;
+        const jTitle2 = localStorage.getItem('jTitle2');
+        document.getElementById('jTitle2').textContent=jTitle2;
+        const organization2 = localStorage.getItem('organization2');
+        document.getElementById('organization2').textContent=organization2;
+        const jYear2 = localStorage.getItem('jYear2');
+        document.getElementById('jYear2').textContent=jYear2;
+        const description2 = localStorage.getItem('description2');
+        document.getElementById('description2').textContent=description2;
+
+        const skills = localStorage.getItem('skills');
+        document.getElementById('skills').textContent=skills;
+
+        const pTitle1 = localStorage.getItem('pTitle1');
+        document.getElementById('pTitle1').textContent = pTitle1;
+        const pDescription1 = localStorage.getItem('pDescription1');
+        document.getElementById('pDescription1').textContent = pDescription1;
+
+        const pTitle2 = localStorage.getItem('pTitle2');
+        document.getElementById('pTitle2').textContent = pTitle2;
+        const pDescription2 = localStorage.getItem('pDescription2');
+        document.getElementById('pDescription2').textContent = pDescription2;
+
+//         // added here
+//         const schools = JSON.parse(localStorage.getItem('schools'));
+// const degrees = JSON.parse(localStorage.getItem('degrees'));
+// const years = JSON.parse(localStorage.getItem('years'));
+// // 
+     </script>
+
+</body>
+</html>
